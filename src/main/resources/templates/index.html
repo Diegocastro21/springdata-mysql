@@ -1,28 +1,24 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
+<html xmlns:th="http://www.thymeleaf.org"><head>
   <title>Inicio</title>
   <meta charset="UTF-8">
 </head>
 <body>
 <h1>Inicio</h1>
-<p th:text="${mensaje}"></p>
-<p th:text="${saludo}"></p>
-<br/>
-<table >
-  <tr>
-    <th>| Nombre |</th>
-    <th> Apellido |</th>
-    <th> Email |</th>
-    <th> Telefono </th>
-  </tr>
+  <table >
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Teléfono</th>
+    </tr>
+    <tr th:each="personas : ${personas}">
+      <td th:text="${personas.nombre}">Mostrar Nombre</td>
+      <td th:text="${personas.apellido}">Mostrar Apellido</td>
+      <td th:text="${personas.email}">Mostrar Email</td>
+      <td th:text="${personas.telefono}">Mostrar Teléfono</td>
+    </tr>
+    </table>
 
-  <tr th:each="persona : ${personas}">
-    <td th:text="${persona.nombre}">Mostrar Nombre</td>
-    <td th:text="${persona.apellido}">Mostrar Apellido</td>
-    <td th:text="${persona.email}">Mostrar Email</td>
-    <td th:text="${persona.telefono}">Mostrar Telefono</td>
-  </tr>
-</table>
 </body>
 </html>
