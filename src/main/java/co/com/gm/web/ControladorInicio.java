@@ -2,6 +2,7 @@ package co.com.gm.web;
 
 import co.com.gm.dao.PersonaDao;
 import co.com.gm.domain.Persona;
+import co.com.gm.servicio.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,12 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorInicio {
 
     @Autowired
-    private PersonaDao personaDao;
+    private PersonaService personaService;
 
     @GetMapping("/")
     public String inicio(Model model){
-
-        Iterable<Persona> personas = personaDao.findAll();
+        var personas = personaService.listarPersonas();
         log.info("ejecutando el controlador Spring MVC");
         model.addAttribute("personas", personas);
         return "index";
